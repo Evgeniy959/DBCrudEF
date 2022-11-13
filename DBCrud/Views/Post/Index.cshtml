@@ -4,7 +4,7 @@
     int count = 1;
 }
 
-<h1>Index</h1>
+<h1 class="text-center">List</h1>
 
 @if (TempData.ContainsKey("Status"))
     {
@@ -16,27 +16,29 @@
 
 <table class="table">
     <thead>
-        <tr>
+        <tr class="tab-row">
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Content</th>
             <th scope="col">Date</th>
             <th scope="col">ImageUrl</th>
+            <th scope="col"></th>
+            <th scope="col">actions</th>
         </tr>
     </thead>
     <tbody>
 
         @foreach (var item in @Model)
         {
-            <tr>
-                <th scope="row">@(count++)</th>
-                <td>@item.Title</td>
-                <td>@Html.Raw(@item.Content)</td>
-                <td>@item.Date</td>
-                <td><img alt="ImageUrl" src="@item.ImageUrl" /></td>
-                <td><div class="col-10"><a asp-action="Delete" asp-controller="Post" asp-route-id="@item.Id" class="form-control btn btn-primary">Delete</a></div></td>
-                <td><div class="col-10"><a asp-action="Edit" asp-controller="Post" asp-route-id="@item.Id" class="form-control btn btn-primary">Edit</a></div></td>
-            </tr>
+        <tr class="tab-row">
+            <th scope="row">@(count++)</th>
+            <td>@item.Title</td>
+            <td>@Html.Raw(@item.Content)</td>
+            <td>@item.Date</td>
+            <td><img alt="ImageUrl" src="@item.ImageUrl" /></td>
+            <td><div class="col-14"><a asp-action="Edit" asp-controller="Post" asp-route-id="@item.Id" class="form-control btn btn-primary">Edit</a></div></td>
+            <td><div class="col-14"><a asp-action="Delete" asp-controller="Post" asp-route-id="@item.Id" class="form-control btn btn-primary">Delete</a></div></td>
+        </tr>
             
         }
 

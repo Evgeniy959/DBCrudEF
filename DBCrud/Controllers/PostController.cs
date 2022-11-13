@@ -63,11 +63,9 @@ namespace DBCrud.Controllers
             if (post != null)
             {
                 blogDbContext.Posts.Remove(post);
-                //db.SaveChanges();
                 await blogDbContext.SaveChangesAsync();
             }
             return RedirectToAction("Index");
-            //return View(post);
         }
         [HttpGet]
         public IActionResult Edit(int id)
@@ -76,19 +74,24 @@ namespace DBCrud.Controllers
             return View(post);
         }
 
-        /*[HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        [HttpPost]
+        public async Task<IActionResult> Edit(Post post, IFormFile ImageUrl)
         {
-            Post post = blogDbContext.Posts.Find(id);
-            if (post != null)
+            try
             {
-                post.Title = "qwert";
-                //blogDbContext.Posts.Remove(post);
-                //db.SaveChanges();
+                post.ImageUrl = await FileUploadHelper.Upload(ImageUrl);
+            }
+            catch (Exception) { }
+            Post postDb = blogDbContext.Posts.Find(post.Id);
+            if (postDb != null)
+            {
+                postDb.Title = post.Title;
+                postDb.ImageUrl = post.ImageUrl;
+                postDb.Content = post.Content;
+                postDb.Date = post.Date;
                 await blogDbContext.SaveChangesAsync();
             }
             return RedirectToAction("Index");
-            return View(post);*/
         }
 
     }

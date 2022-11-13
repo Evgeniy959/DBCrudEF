@@ -59,8 +59,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: darkgray;
 }
 .footer {
   position: absolute;
@@ -69,7 +70,22 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*My style
+-----------------------------------------------------------------------------------*/
 img {
     width: 200px;
     height: 150px;
+}
+
+.nav {
+    background-color: darkslategray;
+}
+
+.bod {
+    background-color: thistle;
+}
+
+.tab-row {
+    background-color: burlywood;
 }
